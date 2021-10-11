@@ -1,2 +1,3 @@
-# ms-registry
-Microservices API Specification Registry 
+# MOLFAR. Реєстр MSAPI-специфікацій  мікросервісів
+
+Надає доступ до MSAPI-специфікацій мікросервісів та описів повторюваного використання за назвою

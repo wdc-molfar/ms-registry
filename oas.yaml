@@ -1,0 +1,223 @@
+openapi: "3.0.2"
+
+
+info: 
+  
+  title: "MOLFAR. Реєстр MSAPI-специфікацій  мікросервісів"
+  
+  description: "Надає доступ до MSAPI-специфікацій мікросервісів та описів повторюваного використання за назвою"
+  
+  version: "1.0.1"
+  
+  contact:
+    name: "ms-registry"
+    url: "http://localhost:8080/"
+    email: "boldak.andrey@gmail.com"
+  
+  license: 
+    name: "MIT License"
+    url: "http://localhost:8080/license.html"
+
+    
+externalDocs:
+  description: "Документація"
+  url: "https://wdc-molfar.github.io/ms-registry/"
+
+  
+servers:
+  
+  - url: "http://localhost:8080"
+    description: "Локальне розроблення"
+    
+
+components:
+  
+  
+  parameters:
+    
+    name_in_path:
+      name: name
+      description: "Назва специфікації"
+      required: true
+      in: path
+      schema:
+        type: string
+      example: servers.yaml  
+    
+  
+  schemas:
+  
+    spec: 
+      type: "string"
+    
+    spec_desc:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        data:
+          type: string
+      
+      
+    array_of_spec_desc:  
+      items:
+        $ref: '#/components/schemas/spec_desc'
+    
+    error:
+      type: object
+      properties:
+        body:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+          required:
+            - code
+            - message    
+  
+  
+  requestBodies:
+    spec:
+      content:
+        text/plain:
+          schema:
+            $ref: "#/components/schemas/spec"
+          example: >
+            # spec snippet
+              - url: http://localhost:8080
+                description: Local development
+   
+      
+  
+  responses:
+    
+    spec_response: 
+      description: "MSAPI-специфікація в форматі YAML"
+      content:
+        application/yaml:
+          schema: 
+            $ref: '#/components/schemas/spec'
+    
+    spec_list_response: 
+      description: "Список зареєстрованих специфікацій в форматі JSON"
+      content:
+        application/json:
+          schema: 
+            $ref: '#/components/schemas/array_of_spec_desc'
+        
+    spec_not_found:
+      description: "Специфікацію не знайдено"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error'
+            
+    bad_request:
+      description: "Специфікація вже існує"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error'
+            
+    
+paths:
+  /:
+    get: 
+      
+      summary: "Отримати загальний опис сервісу"
+      description: "Повертає сторінку загального опису"
+      tags: 
+        - "Загальна інформація"
+      
+      responses:
+        200: 
+          description: "Успішна відповідь"
+          content:
+            text/html:
+              schema:
+                type: "string"
+              example: "Not found"
+  
+  /spec:
+    
+    get:
+      summary: "Отримати список зареєстрованих специфікацій"
+      description: "Повертає список зареєстрованих специфікацій"
+      tags: 
+        - "Загальна інформація"
+      
+      responses:
+        200: 
+          $ref: "#/components/responses/spec_list_response"    
+        
+              
+  
+  /spec/{name}:
+  
+    get:
+      summary: "Отримати специфікацію"
+      description: "Повертає специфікацію в форматі YAML за ім'ям"
+      tags: 
+        - "Доступ до реєстру"
+      parameters:
+        - $ref: "#/components/parameters/name_in_path"    
+      responses:
+        200: 
+          $ref: "#/components/responses/spec_response"
+        404:
+          $ref: "#/components/responses/spec_not_found"
+    
+    delete:
+      summary: "Видалити специфікацію"
+      description: "Видаляє специфікацію з реєстру"
+      tags:
+        - "Управління реєстром"
+      parameters:
+          - $ref: "#/components/parameters/name_in_path"
+      responses:
+        200: 
+          description: "Успішна відповідь"
+          content: 
+            application/json: 
+              schema:
+                type: object
+                properties:
+                   body: 
+                    type: object
+                   text: 
+                    type: string 
+            
+        
+    post:
+      summary: "Реєстрація специфікації"
+      description: "Зберігає специфікацію в реєстрі та повертає її"
+      tags:
+        - "Управління реєстром"
+      parameters:
+        - $ref: "#/components/parameters/name_in_path"    
+      requestBody:
+        $ref: "#/components/requestBodies/spec"
+      responses:
+        200: 
+          $ref: "#/components/responses/spec_response"          
+        400:
+          $ref: "#/components/responses/bad_request"
+    
+    
+    put:
+      summary: "Оновити специфікацію"
+      description: "Оновлює фбо реєструє специфікацію в реєстрі та повертає оновлену версію специфікації"
+      tags:
+        - "Управління реєстром"
+      parameters:
+        - $ref: "#/components/parameters/name_in_path"    
+      requestBody:
+        $ref: "#/components/requestBodies/spec"
+      responses:
+        200: 
+          $ref: "#/components/responses/spec_response"          
+        
