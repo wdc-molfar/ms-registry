@@ -7,9 +7,7 @@ language_clients:
   - shell: curl
   - javascript: axios
 toc_footers:
-  - <a
-    href="https://boldak.github.io/dis-edu/swagger/12.api.html#openapi-swagger">Educational
-    Materials</a>
+  - <a href="https://wdc-molfar.github.io/ms-registry/">Документація</a>
 includes: []
 search: true
 highlight_theme: darkula
