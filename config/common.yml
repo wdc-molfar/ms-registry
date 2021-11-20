@@ -29,6 +29,7 @@ production:
   <<: *defaults
 
   logger:
+    name: "@molfar/ms-registry"
     level: error
     levels:
       trace:
