@@ -15,9 +15,11 @@ const swStats = require('swagger-stats');
 
 const swaggerDocument = YAML.load('./oas.yaml');
 
+swaggerDocument.servers[0].url = process.env.HOST || config.api.host;
+swaggerDocument.servers[0].description = "";
 
 
-const log = logger(config.logger);
+//const log = logger(config.logger);
 const app = express();
 
 app.use(CORS())
