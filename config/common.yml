@@ -8,17 +8,6 @@ defaults: &defaults
     db: msapi-registry
     collection: msapi  
 
-  logger:
-    name: "@molfar/ms-registry"
-    level: debug
-    levels:
-      trace:
-      debug: STDOUT
-      info:
-      warn:
-      error: STDERR
-      fatal:
-
 development:
   <<: *defaults
 
@@ -27,14 +16,3 @@ test:
 
 production:
   <<: *defaults
-
-  logger:
-    name: "@molfar/ms-registry"
-    level: error
-    levels:
-      trace:
-      debug: STDOUT
-      info: 
-      warn: 
-      error: STDERR
-      fatal: 

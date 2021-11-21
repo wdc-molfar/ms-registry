@@ -7,7 +7,6 @@ const CORS = require("cors")
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const config = require('../lib/config');
-const logger = require('../lib/logger');
 
 const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
@@ -19,7 +18,6 @@ swaggerDocument.servers[0].url = process.env.HOST || config.api.host;
 swaggerDocument.servers[0].description = "";
 
 
-//const log = logger(config.logger);
 const app = express();
 
 app.use(CORS())
