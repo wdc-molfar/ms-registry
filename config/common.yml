@@ -1,6 +1,6 @@
 defaults: &defaults
   api:
-    port: 8080
+    port: 8081
 
   mongo:
     url: mongodb+srv://molfar:molfar@ms-registry.tb3pi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
