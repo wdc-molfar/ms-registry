@@ -3,23 +3,23 @@
 ## Functions
 
 <dl>
-<dt><a href="#get">get(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#get">get(options)</a> ⇒ <code>Надає доступ до загального опису сервісу</code></dt>
 <dd></dd>
-<dt><a href="#getSpec">getSpec(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#getSpec">getSpec(options)</a> ⇒ <code>Надає доступ до списку зареєстрованих специфікацій API мікросервісів і робочих процесів</code></dt>
 <dd></dd>
-<dt><a href="#getSpecByName">getSpecByName(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#getSpecByName">getSpecByName(options)</a> ⇒ <code>Надає доступ до специфікації за назвою</code></dt>
 <dd></dd>
-<dt><a href="#deleteSpecByName">deleteSpecByName(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#deleteSpecByName">deleteSpecByName(options)</a> ⇒ <code>Видаляє специфікацію за назвою</code></dt>
 <dd></dd>
-<dt><a href="#postSpecByName">postSpecByName(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#postSpecByName">postSpecByName(options)</a> ⇒ <code>Реєструє специфікацію за назвою</code></dt>
 <dd></dd>
-<dt><a href="#putSpecByName">putSpecByName(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#putSpecByName">putSpecByName(options)</a> ⇒ <code>Оновлює специфікацію за назвою</code></dt>
 <dd></dd>
 </dl>
 
 <a name="get"></a>
 
-## get(options) ⇒ <code>Promise</code>
+## get(options) ⇒ <code>Надає доступ до загального опису сервісу</code>
 **Kind**: global function  
 **Throws**:
 
@@ -32,7 +32,7 @@
 
 <a name="getSpec"></a>
 
-## getSpec(options) ⇒ <code>Promise</code>
+## getSpec(options) ⇒ <code>Надає доступ до списку зареєстрованих специфікацій API мікросервісів і робочих процесів</code>
 **Kind**: global function  
 **Throws**:
 
@@ -45,7 +45,7 @@
 
 <a name="getSpecByName"></a>
 
-## getSpecByName(options) ⇒ <code>Promise</code>
+## getSpecByName(options) ⇒ <code>Надає доступ до специфікації за назвою</code>
 **Kind**: global function  
 **Throws**:
 
@@ -59,7 +59,7 @@
 
 <a name="deleteSpecByName"></a>
 
-## deleteSpecByName(options) ⇒ <code>Promise</code>
+## deleteSpecByName(options) ⇒ <code>Видаляє специфікацію за назвою</code>
 **Kind**: global function  
 **Throws**:
 
@@ -73,7 +73,7 @@
 
 <a name="postSpecByName"></a>
 
-## postSpecByName(options) ⇒ <code>Promise</code>
+## postSpecByName(options) ⇒ <code>Реєструє специфікацію за назвою</code>
 **Kind**: global function  
 **Throws**:
 
@@ -87,7 +87,7 @@
 
 <a name="putSpecByName"></a>
 
-## putSpecByName(options) ⇒ <code>Promise</code>
+## putSpecByName(options) ⇒ <code>Оновлює специфікацію за назвою</code>
 **Kind**: global function  
 **Throws**:
 
