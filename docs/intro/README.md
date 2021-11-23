@@ -27,7 +27,9 @@
 - `bunyan` [v1.8.15](https://www.npmjs.com/package/bunyan/v/1.8.15)
 - `cookie-parser` [v1.4.5](https://www.npmjs.com/package/cookie-parser/v/1.4.5)
 - `cors` [v2.8.5](https://www.npmjs.com/package/cors/v/2.8.5)
+- `Docker` [v20.10](https://docs.docker.com/engine/release-notes/#version-2010)
 - `express` [v4.17.1](https://www.npmjs.com/package/express/v/4.17.1)
+- `Kubernetes` [v1.22.4](https://github.com/kubernetes/kubernetes/releases/tag/v1.22.4)
 - `MongoDB NodeJS Driver` [v4.1.3](https://www.npmjs.com/package/mongodb/v/4.1.3)
 - `Node.js` [v16.13.0](https://nodejs.org/download/release/v16.13.0/)
 - `node-yaml-config` [v1.0.0](https://www.npmjs.com/package/node-yaml-config/v/1.0.0)
@@ -48,25 +50,24 @@
 <h2>Опис логічної структури</h2>
 
 Програмний модуль складається з:
-- api
-- api/routes
-- api/services
-- lib
+- `api` – HTTP-сервер
+- `api/services` – контролер запитів
+- `api/routes` – диспетчер запитів
+
+На HTTP-сервер `api`, який складається з визначеної кількості шляхів, приходить запит, який обробляється контролером запитів `api/services`. Контролер `api/services` за певним запитом використовує відповідні сервіси, що виконують певну логіку.
 
 <a name="hardware"></a>
 <h2>Використовувані технічні засоби</h2>
 
-Програмний модуль експлуатується на персональному комп'ютері/сервері ....
+Програмний модуль експлуатується на сервері під управлінням `Node.js`. В основі управління всіх сервісів є система оркестрації `Kubernetes`, де всі контейнери працюють з використанням `Docker`.
 
 <a name="run"></a>
 <h2>Виклик та завантаження</h2>
 
-Програмний модуль об'сягом ... Мб використовує ... Мб оперативної пам'яті.
-
-Завантаження програмного модуля забезпечується набором в web-браузері адреси завантажувального модуля [http://localhost:8080/](http://localhost:8080/) з можливими вказівками:
+Завантаження програмного модуля забезпечується введенням в WEB-браузері адреси завантажувального модуля [http://{hostname}](http://localhost:8080/) з можливими вказівками:
 - [/](http://localhost:8080/) для виклику сторінки із загальним описом сервісу
 - [/spec](http://localhost:8080/spec) для виклику сторінки зі списоком всіх зареєстрованих специфікацій
-- [/spec/{name}](http://localhost:8080/spec/{name}) для отримання специфікації в форматі YAML за назвою
-- [/spec/{name}](http://localhost:8080/spec/{name}) для видалення специфікації за назвою
-- [/spec/{name}](http://localhost:8080/spec/{name}) для реєстрації та отримання специфікації в форматі YAML за назвою
-- [/spec/{name}](http://localhost:8080/spec/{name}) для оновлення та отримання оновленої специфікації в форматі YAML за назвою
+- [/spec/{name}](http://localhost:8080/spec/{name}) метод `GET` – для отримання специфікації в форматі `YAML` за назвою
+- [/spec/{name}](http://localhost:8080/spec/{name}) метод `DELETE` – для видалення специфікації за назвою
+- [/spec/{name}](http://localhost:8080/spec/{name}) метод `POST` – для реєстрації та отримання специфікації за назвою в форматі `YAML`
+- [/spec/{name}](http://localhost:8080/spec/{name}) метод `PUT` – для оновлення та отримання оновленої специфікації за назвою в форматі `YAML`
