@@ -1,22 +1,12 @@
 defaults: &defaults
   api:
-    port: 8081
+    port: 8080
+    host: localhost
 
   mongo:
     url: mongodb+srv://molfar:molfar@ms-registry.tb3pi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
     db: msapi-registry
     collection: msapi  
-
-  logger:
-    name: "@molfar/ms-registry"
-    level: debug
-    levels:
-      trace:
-      debug: STDOUT
-      info:
-      warn:
-      error: STDERR
-      fatal:
 
 development:
   <<: *defaults
@@ -26,13 +16,3 @@ test:
 
 production:
   <<: *defaults
-
-  logger:
-    level: error
-    levels:
-      trace:
-      debug: ./log/debug.log
-      info: ./log/info.log
-      warn: ./log/warn.log
-      error: ./log/error.log
-      fatal: ./log/fatal.log
