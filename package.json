@@ -5,12 +5,13 @@
   "scripts": {
     "start": "node src/bin/www",
     "dev": "nodemon src/bin/www | bunyan",
+    "remove-prism": "sed -i.bak -e \":a\" -e 'N' -e '$!ba' -e \"s/<style src=\\\"prismjs.*css\\\"><\\/style>/ /\" node_modules/@vuepress/theme-default/layouts/Layout.vue",
     "test": "jest --no-cache --runInBand --forceExit",
     "docs:oas": "widdershins -e .widdershins.yml  oas.yaml -o docs/oas/README.md",
     "docs:api": "jsdoc2md  --template docs/.config/README.hbs --files src/**/*.js  > docs/api/README.md",
     "docs:build": "npm run test && npm run docs:api && npm run docs:oas",
-    "docs:dev": " npm run docs:build && npx vuepress dev docs",
-    "docs:prepublish": "npm run docs:build && npx vuepress build docs",
+    "docs:dev": " npm run docs:build && npm run remove-prism && npx vuepress dev docs",
+    "docs:prepublish": "npm run docs:build && npm run remove-prism && npx vuepress build docs",
     "docs:gh-pages": "gh-pages.sh"
   },
   "dependencies": {
@@ -34,6 +35,7 @@
     "jest-stare": "^2.3.0",
     "jsdoc-to-markdown": "^7.0.1",
     "nodemon": "2.0.7",
+    "prism-themes": "^1.9.0",
     "superagent": "^6.1.0",
     "supertest": "^6.1.6",
     "uuid": "^8.3.2",

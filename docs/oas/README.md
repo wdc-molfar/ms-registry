@@ -1,5 +1,5 @@
 ---
-title: MOLFAR. Реєстр специфікацій API мікросервісів та робочих процесів v1.0.1
+title: MOLFAR. Реєстр MSAPI-специфікацій  мікросервісів v1.0.1
 language_tabs:
   - http: HTTP
   - javascript: JavaScript
@@ -17,17 +17,17 @@ headingLevel: 2
 
 <!-- Generator: Widdershins v4.0.1 -->
 
-<h1 id="molfar-msapi-">MOLFAR. Реєстр специфікацій API мікросервісів та робочих процесів v1.0.1</h1>
+<h1 id="molfar-msapi-">MOLFAR. Реєстр MSAPI-специфікацій  мікросервісів v1.0.1</h1>
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
-Надає доступ до реєстру специфікацій API мікросервісів і робочих процесів та описів повторюваного використання за назвою, а також надає можливість управління реєстром специфікацій, зокрема, реєструвати, оновлювати та видаляти специфікації API мікросервісів і робочих процесів
+Надає доступ до MSAPI-специфікацій мікросервісів та описів повторюваного використання за назвою
 
 Base URLs:
 
 * <a href="http://localhost:8080">http://localhost:8080</a>
 
-Email: <a href="mailto:boldak.andrey@gmail.com">boldak.andrey@gmail.com</a> Web: <a href="http://localhost:8080/">ms-registry</a> 
+Email: <a href="mailto:boldak.andrey@gmail.com">ms-registry</a> Web: <a href="http://localhost:8080/">ms-registry</a> 
 License: <a href="http://localhost:8080/license.html">MIT License</a>
 
 <h1 id="molfar-msapi---">Загальна інформація</h1>
